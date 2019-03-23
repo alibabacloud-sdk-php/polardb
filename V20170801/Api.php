@@ -2,7 +2,56 @@
 
 namespace AlibabaCloud\Polardb\V20170801;
 
+use AlibabaCloud\ApiResolverTrait;
 use AlibabaCloud\Rpc;
+
+/**
+ * Resolve Api based on the method name.
+ *
+ * @method CreateDBNodes createDBNodes(array $options = [])
+ * @method UntagResources untagResources(array $options = [])
+ * @method TagResources tagResources(array $options = [])
+ * @method ListTagResources listTagResources(array $options = [])
+ * @method ModifyAccountPassword modifyAccountPassword(array $options = [])
+ * @method ModifyDBDescription modifyDBDescription(array $options = [])
+ * @method ModifyDBEndpointAddress modifyDBEndpointAddress(array $options = [])
+ * @method CreateDBEndpointAddress createDBEndpointAddress(array $options = [])
+ * @method DeleteDBEndpointAddress deleteDBEndpointAddress(array $options = [])
+ * @method ModifyDBClusterEndpoint modifyDBClusterEndpoint(array $options = [])
+ * @method DeleteDBClusterEndpoint deleteDBClusterEndpoint(array $options = [])
+ * @method CreateDBClusterEndpoint createDBClusterEndpoint(array $options = [])
+ * @method DescribeDBClusterEndpoints describeDBClusterEndpoints(array $options = [])
+ * @method ModifyDBClusterParameters modifyDBClusterParameters(array $options = [])
+ * @method DescribeDBClusterParameters describeDBClusterParameters(array $options = [])
+ * @method RestartDBNode restartDBNode(array $options = [])
+ * @method ModifyDBClusterAccessWhitelist modifyDBClusterAccessWhitelist(array $options = [])
+ * @method DescribeDBClusterAccessWhitelist describeDBClusterAccessWhitelist(array $options = [])
+ * @method ModifyDBClusterMaintainTime modifyDBClusterMaintainTime(array $options = [])
+ * @method CreateDatabase createDatabase(array $options = [])
+ * @method DescribeDatabases describeDatabases(array $options = [])
+ * @method RevokeAccountPrivilege revokeAccountPrivilege(array $options = [])
+ * @method ResetAccount resetAccount(array $options = [])
+ * @method GrantAccountPrivilege grantAccountPrivilege(array $options = [])
+ * @method DeleteDatabase deleteDatabase(array $options = [])
+ * @method DeleteAccount deleteAccount(array $options = [])
+ * @method DeleteBackup deleteBackup(array $options = [])
+ * @method CreateBackup createBackup(array $options = [])
+ * @method DescribeRegions describeRegions(array $options = [])
+ * @method ModifyAccountDescription modifyAccountDescription(array $options = [])
+ * @method ModifyBackupPolicy modifyBackupPolicy(array $options = [])
+ * @method ModifyDBClusterDescription modifyDBClusterDescription(array $options = [])
+ * @method DescribeDBClusterAttribute describeDBClusterAttribute(array $options = [])
+ * @method DescribeDBClusters describeDBClusters(array $options = [])
+ * @method CreateAccount createAccount(array $options = [])
+ * @method DeleteDBCluster deleteDBCluster(array $options = [])
+ * @method DescribeAccounts describeAccounts(array $options = [])
+ * @method DescribeBackupPolicy describeBackupPolicy(array $options = [])
+ * @method DescribeBackups describeBackups(array $options = [])
+ */
+class PolardbApiResolver
+{
+    use ApiResolverTrait;
+}
 
 class V20170801Rpc extends Rpc
 {
@@ -17,6 +66,41 @@ class V20170801Rpc extends Rpc
 
     /** @var string */
     public $serviceCode = 'polardb';
+}
+
+/**
+ * @method string getResourceOwnerId()
+ * @method $this withResourceOwnerId($value)
+ * @method string getResourceOwnerAccount()
+ * @method $this withResourceOwnerAccount($value)
+ * @method string getClientToken()
+ * @method $this withClientToken($value)
+ * @method string getDBClusterId()
+ * @method $this withDBClusterId($value)
+ * @method string getOwnerAccount()
+ * @method $this withOwnerAccount($value)
+ * @method string getOwnerId()
+ * @method $this withOwnerId($value)
+ * @method array getDBNode()
+ */
+class CreateDBNodes extends V20170801Rpc
+{
+
+    /**
+     * @param array $dBNode
+     *
+     * @return $this
+     */
+    public function withDBNode(array $dBNode)
+    {
+        $this->data['DBNode'] = $dBNode;
+        foreach ($dBNode as $depth1 => $depth1Value) {
+            $this->options['query']['DBNode.' . ($depth1 + 1) . '.ClassCode'] = $depth1Value['ClassCode'];
+            $this->options['query']['DBNode.' . ($depth1 + 1) . '.ZoneId'] = $depth1Value['ZoneId'];
+        }
+
+        return $this;
+    }
 }
 
 /**
@@ -39,14 +123,14 @@ class UntagResources extends V20170801Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $resourceId
      *
      * @return $this
      */
-    public function withResourceId(array $value)
+    public function withResourceId(array $resourceId)
     {
-        $this->data['ResourceId'] = $value;
-        foreach ($value as $i => $iValue) {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
             $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
         }
 
@@ -54,14 +138,14 @@ class UntagResources extends V20170801Rpc
     }
 
     /**
-     * @param array $value
+     * @param array $tagKey
      *
      * @return $this
      */
-    public function withTagKey(array $value)
+    public function withTagKey(array $tagKey)
     {
-        $this->data['TagKey'] = $value;
-        foreach ($value as $i => $iValue) {
+        $this->data['TagKey'] = $tagKey;
+        foreach ($tagKey as $i => $iValue) {
             $this->options['query']['TagKey.' . ($i + 1)] = $iValue;
         }
 
@@ -87,14 +171,14 @@ class TagResources extends V20170801Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $resourceId
      *
      * @return $this
      */
-    public function withResourceId(array $value)
+    public function withResourceId(array $resourceId)
     {
-        $this->data['ResourceId'] = $value;
-        foreach ($value as $i => $iValue) {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
             $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
         }
 
@@ -102,16 +186,16 @@ class TagResources extends V20170801Rpc
     }
 
     /**
-     * @param array $value
+     * @param array $tag
      *
      * @return $this
      */
-    public function withTag(array $value)
+    public function withTag(array $tag)
     {
-        $this->data['Tag'] = $value;
-        foreach ($value as $i => $iValue) {
-            $this->options['query']['Tag.' . ($i + 1) . '.Value'] = $value[$i]['Value'];
-            $this->options['query']['Tag.' . ($i + 1) . '.Key'] = $value[$i]['Key'];
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
         }
 
         return $this;
@@ -138,14 +222,14 @@ class ListTagResources extends V20170801Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $resourceId
      *
      * @return $this
      */
-    public function withResourceId(array $value)
+    public function withResourceId(array $resourceId)
     {
-        $this->data['ResourceId'] = $value;
-        foreach ($value as $i => $iValue) {
+        $this->data['ResourceId'] = $resourceId;
+        foreach ($resourceId as $i => $iValue) {
             $this->options['query']['ResourceId.' . ($i + 1)] = $iValue;
         }
 
@@ -153,16 +237,16 @@ class ListTagResources extends V20170801Rpc
     }
 
     /**
-     * @param array $value
+     * @param array $tag
      *
      * @return $this
      */
-    public function withTag(array $value)
+    public function withTag(array $tag)
     {
-        $this->data['Tag'] = $value;
-        foreach ($value as $i => $iValue) {
-            $this->options['query']['Tag.' . ($i + 1) . '.Value'] = $value[$i]['Value'];
-            $this->options['query']['Tag.' . ($i + 1) . '.Key'] = $value[$i]['Key'];
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
         }
 
         return $this;
@@ -754,16 +838,16 @@ class DescribeDBClusters extends V20170801Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $tag
      *
      * @return $this
      */
-    public function withTag(array $value)
+    public function withTag(array $tag)
     {
-        $this->data['Tag'] = $value;
-        foreach ($value as $i => $iValue) {
-            $this->options['query']['Tag.' . ($i + 1) . '.Value'] = $value[$i]['Value'];
-            $this->options['query']['Tag.' . ($i + 1) . '.Key'] = $value[$i]['Key'];
+        $this->data['Tag'] = $tag;
+        foreach ($tag as $depth1 => $depth1Value) {
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Value'] = $depth1Value['Value'];
+            $this->options['query']['Tag.' . ($depth1 + 1) . '.Key'] = $depth1Value['Key'];
         }
 
         return $this;
